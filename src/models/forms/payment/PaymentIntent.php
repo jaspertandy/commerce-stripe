@@ -42,7 +42,7 @@ class PaymentIntent extends CreditCardPaymentForm
     /**
      * @inheritdoc
      */
-    public function populateFromPaymentSource(PaymentSource $paymentSource)
+    public function populateFromPaymentSource(PaymentSource $paymentSource): void
     {
         $this->paymentMethodId = $paymentSource->token;
 

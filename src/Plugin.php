@@ -7,6 +7,7 @@
 
 namespace craft\commerce\stripe;
 
+use craft\base\Model;
 use craft\commerce\services\Gateways;
 use craft\commerce\stripe\gateways\Gateway;
 use craft\commerce\stripe\gateways\PaymentIntents;
@@ -28,7 +29,7 @@ class Plugin extends \craft\base\Plugin
     /**
      * @inheritDoc
      */
-    public $schemaVersion = '2.2.0';
+    public string $schemaVersion = '2.2.0';
 
     use Services;
 
@@ -54,7 +55,7 @@ class Plugin extends \craft\base\Plugin
     /**
      * @inheritdoc
      */
-    protected function createSettingsModel()
+    protected function createSettingsModel(): ?Model
     {
         return new Settings();
     }

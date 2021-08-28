@@ -219,7 +219,7 @@ abstract class SubscriptionGateway extends Gateway
     /**
      * @inheritdoc
      */
-    public function refreshPaymentHistory(Subscription $subscription)
+    public function refreshPaymentHistory(Subscription $subscription): void
     {
         $this->configureStripeClient();
         // Update the subscription period.
@@ -591,7 +591,7 @@ abstract class SubscriptionGateway extends Gateway
         do {
             // Handle cases when Stripe sends us a webhook so soon that we haven't processed the subscription that triggered the webhook
             sleep(1);
-            $subscription = Subscription::find()->reference($subscriptionReference)->anyStatus()->one();
+            $subscription = Subscription::find()->reference($subscriptionReference)->status(null)->one();
             $counter++;
         } while (!$subscription && $counter < $limit);
 
@@ -642,7 +642,7 @@ abstract class SubscriptionGateway extends Gateway
         $this->configureStripeClient();
         $stripeSubscription = $data['data']['object'];
 
-        $subscription = Subscription::find()->reference($stripeSubscription['id'])->anyStatus()->one();
+        $subscription = Subscription::find()->reference($stripeSubscription['id'])->status(null)->one();
 
         if (!$subscription) {
             Craft::warning('Subscription with the reference “' . $stripeSubscription['id'] . '” not found when processing webhook ' . $data['id'], 'stripe');
@@ -664,7 +664,7 @@ abstract class SubscriptionGateway extends Gateway
     {
         $this->configureStripeClient();
         $stripeSubscription = $data['data']['object'];
-        $subscription = Subscription::find()->anyStatus()->reference($stripeSubscription['id'])->one();
+        $subscription = Subscription::find()->status(null)->reference($stripeSubscription['id'])->one();
 
         if (!$subscription) {
             Craft::warning('Subscription with the reference “' . $stripeSubscription['id'] . '” not found when processing webhook ' . $data['id'], 'stripe');

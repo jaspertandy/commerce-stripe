@@ -83,7 +83,7 @@ class PaymentIntents extends BaseGateway
     /**
      * @inheritdoc
      */
-    public function getPaymentFormHtml(array $params)
+    public function getPaymentFormHtml(array $params): ?string
     {
         $this->configureStripeClient();
         $defaults = [
@@ -190,7 +190,7 @@ class PaymentIntents extends BaseGateway
     /**
      * @inheritdoc
      */
-    public function getSettingsHtml()
+    public function getSettingsHtml(): ?string
     {
         $this->configureStripeClient();
         return Craft::$app->getView()->renderTemplate('commerce-stripe/gatewaySettings/intentsSettings', ['gateway' => $this]);
@@ -445,7 +445,7 @@ class PaymentIntents extends BaseGateway
 
         $subscriptionReference = $stripeInvoice['subscription'] ?? null;
 
-        if (!$subscriptionReference || !($subscription = Subscription::find()->anyStatus()->reference($subscriptionReference)->one())) {
+        if (!$subscriptionReference || !($subscription = Subscription::find()->status(null)->reference($subscriptionReference)->one())) {
             Craft::warning('Subscription with the reference “' . $subscriptionReference . '” not found when processing webhook ' . $data['id'], 'stripe');
 
             return;

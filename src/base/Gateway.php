@@ -115,7 +115,7 @@ abstract class Gateway extends BaseGateway
      */
     public $signingSecret;
 
-    public function init()
+    public function init(): void
     {
         parent::init();
 
@@ -296,7 +296,7 @@ abstract class Gateway extends BaseGateway
      * @return string
      * @since 2.3.1
      */
-    public function getTransactionHashFromWebhook()
+    public function getTransactionHashFromWebhook(): ?string
     {
         $this->configureStripeClient();
         $rawData = Craft::$app->getRequest()->getRawBody();

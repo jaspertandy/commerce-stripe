@@ -112,7 +112,7 @@ class Gateway extends BaseGateway
     /**
      * @inheritdoc
      */
-    public function getPaymentFormHtml(array $params)
+    public function getPaymentFormHtml(array $params): ?string
     {
         $this->configureStripeClient();
         $defaults = [
@@ -154,7 +154,7 @@ class Gateway extends BaseGateway
     /**
      * @inheritdoc
      */
-    public function getSettingsHtml()
+    public function getSettingsHtml(): ?string
     {
         $this->configureStripeClient();
         return Craft::$app->getView()->renderTemplate('commerce-stripe/gatewaySettings/chargeSettings', ['gateway' => $this]);

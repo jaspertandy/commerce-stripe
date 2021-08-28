@@ -23,9 +23,10 @@
     "docs": "https://github.com/craftcms/commerce-stripe/blob/master/README.md",
     "rss": "https://github.com/craftcms/commerce-stripe/commits/master.atom"
   },
+  "minimum-stability": "dev",
   "require": {
-    "craftcms/cms": "^3.4.0",
-    "craftcms/commerce": "dev-develop as 3.4.3",
+    "craftcms/cms": "^4.0.0-alpha",
+    "craftcms/commerce": "^4.0.0-alpha",
     "stripe/stripe-php": "^7.0"
   },
   "require-dev": {
