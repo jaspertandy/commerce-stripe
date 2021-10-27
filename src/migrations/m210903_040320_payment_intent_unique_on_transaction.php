@@ -17,7 +17,7 @@ class m210903_040320_payment_intent_unique_on_transaction extends Migration
     /**
      * @inheritdoc
      */
-    public function safeUp()
+    public function safeUp(): bool
     {
         if (!$this->db->columnExists('{{%stripe_paymentintents}}', 'transactionHash')) {
             $this->addColumn('{{%stripe_paymentintents}}', 'transactionHash', $this->string()->after('orderId'));
@@ -55,12 +55,14 @@ class m210903_040320_payment_intent_unique_on_transaction extends Migration
 
         $this->createIndex(null, '{{%stripe_paymentintents}}', 'reference', true);
         $this->createIndex(null, '{{%stripe_paymentintents}}', ['orderId', 'gatewayId', 'customerId', 'transactionHash'], true);
+
+        return true;
     }
 
     /**
      * @inheritdoc
      */
-    public function safeDown()
+    public function safeDown(): bool
     {
         echo "m210903_040320_payment_intent_unique_on_transaction cannot be reverted.\n";
         return false;

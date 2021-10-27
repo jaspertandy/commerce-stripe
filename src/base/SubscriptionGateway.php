@@ -326,7 +326,7 @@ abstract class SubscriptionGateway extends Gateway
 
             foreach ($planList as $plan) {
                 $productName = $productList[$plan['product']]['name'];
-                $planName = null !== $plan['nickname'] ? ' (' . $plan['nickname'] . ')' : '';
+                $planName = $plan['nickname'] !== null ? ' (' . $plan['nickname'] . ')' : '';
                 $output[] = ['name' => $productName . $planName, 'reference' => $plan['id']];
             }
         }

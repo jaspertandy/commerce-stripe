@@ -106,7 +106,7 @@ class PaymentIntent extends Model
      */
     public function getUser()
     {
-        if (null === $this->_user) {
+        if (!isset($this->_user)) {
             $customer = $this->getCustomer();
             if ($customer) {
                 $this->_user = Craft::$app->getUsers()->getUserById($customer->userId);
@@ -123,7 +123,7 @@ class PaymentIntent extends Model
      */
     public function getGateway()
     {
-        if (null === $this->_gateway) {
+        if (!isset($this->_gateway)) {
             $this->_gateway = Commerce::getInstance()->getGateways()->getGatewayById($this->gatewayId);
         }
 
@@ -137,7 +137,7 @@ class PaymentIntent extends Model
      */
     public function getCustomer()
     {
-        if (null === $this->_customer) {
+        if (!isset($this->_customer)) {
             $this->_customer = StripePlugin::getInstance()->getCustomers()->getCustomerById($this->customerId);
         }
 
@@ -151,7 +151,7 @@ class PaymentIntent extends Model
      */
     public function getOrder()
     {
-        if (null === $this->_order) {
+        if (!isset($this->_order)) {
             $this->_order = Commerce::getInstance()->getOrders()->getOrderById($this->orderId);
         }
 
@@ -165,7 +165,7 @@ class PaymentIntent extends Model
      */
     public function getTransaction()
     {
-        if (null === $this->_tranasction) {
+        if (!isset($this->_transaction)) {
             $this->_transaction = Commerce::getInstance()->getTransactions()->getTransactionByHash($this->transactionHash);
         }
 

@@ -78,7 +78,7 @@ class Customer extends Model
      */
     public function getUser()
     {
-        if (null === $this->_user) {
+        if (!isset($this->_user)) {
             $this->_user = Craft::$app->getUsers()->getUserById($this->userId);
         }
 
@@ -92,7 +92,7 @@ class Customer extends Model
      */
     public function getGateway()
     {
-        if (null === $this->_gateway) {
+        if (!isset($this->_gateway)) {
             $this->_gateway = Commerce::getInstance()->getGateways()->getGatewayById($this->gatewayId);
         }
 

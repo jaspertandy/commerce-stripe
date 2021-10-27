@@ -60,7 +60,7 @@ class Invoice extends Model
      */
     public function getSubscription()
     {
-        if (null === $this->_subscription) {
+        if (!isset($this->_subscription)) {
             $this->_subscription = Subscription::find()->id($this->subscriptionId)->one();
         }
 
