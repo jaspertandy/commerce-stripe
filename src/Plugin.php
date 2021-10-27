@@ -29,7 +29,7 @@ class Plugin extends \craft\base\Plugin
     /**
      * @inheritDoc
      */
-    public string $schemaVersion = '2.2.0';
+    public string $schemaVersion = '2.4.0';
 
     use Services;
 

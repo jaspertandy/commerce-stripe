@@ -1,5 +1,30 @@
 # Release Notes for Stripe for Craft Commerce
 
+## Unreleased
+
+### Added
+- Added support for the `payment_method.detached` Stripe webhook event.
+
+### Fixed
+- Fixed a bug where a customer would not save after being incorrectly detected as a duplicate. ([#97](https://github.com/craftcms/commerce-stripe/issues/97))
+- Fixed a bug where plugins modifying the Stripe API request would have their metadata changes ignored. ([#85](https://github.com/craftcms/commerce-stripe/issues/85)) 
+
+## 2.4.0 - 2021-10-13
+
+### Added
+- Added support for the `charge.refund.updated` Stripe webhook event.
+
+### Changed
+- Stripe for Craft Commerce now requires Craft CMS 3.7.0 and Craft Commerce 3.4.5 or later.
+
+### Fixed
+- Fixed a bug where a refund could fail asynchronously.
+
+## 2.3.2.2 - 2021-10-10
+
+### Fixed
+- Fixed a bug that prevented multiple payments on a single order. ([#147](https://github.com/craftcms/commerce-stripe/issues/147))
+
 ## 2.3.2.1 - 2020-11-02
 
 ### Fixed
