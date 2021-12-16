@@ -15,7 +15,7 @@ class JqA extends JqueryAsset
     public function init()
     {
         $this->jsOptions = [
-            'data-cookieconsent' => 'necessary'
+            'data-cookieconsent' => 'ignore', 'data-pagespeed-no-defer' => 'true'
         ];
 
         parent::init();
@@ -43,7 +43,7 @@ class ChargeFormAsset extends AssetBundle
         ];
 
         $this->jsOptions = [
-            'data-cookieconsent' => 'necessary'
+            'data-cookieconsent' => 'ignore', 'data-pagespeed-no-defer' => 'true'
         ];
 
         $this->depends = [
