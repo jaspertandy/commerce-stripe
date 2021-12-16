@@ -10,6 +10,18 @@ namespace craft\commerce\stripe\web\assets\chargeform;
 use craft\web\AssetBundle;
 use yii\web\JqueryAsset;
 
+class JqA extends JqueryAsset
+{
+    public function init()
+    {
+        $this->jsOptions = [
+            'data-cookieconsent' => 'ignore'
+        ];
+
+        parent::init();
+    }
+}
+
 /**
  * Asset bundle for the Payment Form
  */
@@ -30,8 +42,12 @@ class ChargeFormAsset extends AssetBundle
             'js/paymentForm.js',
         ];
 
+        $this->jsOptions = [
+            'data-cookieconsent' => 'ignore'
+        ];
+
         $this->depends = [
-            JqueryAsset::class,
+            JqA::class,
         ];
 
         parent::init();
