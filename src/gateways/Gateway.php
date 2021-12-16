@@ -139,7 +139,7 @@ class Gateway extends BaseGateway
         $previousMode = $view->getTemplateMode();
         $view->setTemplateMode(View::TEMPLATE_MODE_CP);
 
-        $view->registerJsFile('https://js.stripe.com/v3/', ['data-cookieconsent' => 'ignore']);
+        $view->registerJsFile('https://js.stripe.com/v3/', ['data-cookieconsent' => 'necessary']);
         $view->registerAssetBundle(ChargeFormAsset::class);
 
         $html = $view->renderTemplate('commerce-stripe/paymentForms/chargeForm', $params);
